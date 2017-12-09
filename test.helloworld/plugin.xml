@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="test.helloworld.commands.sampleCommand"
+            class="test.helloworld.handlers.SampleHandler">
+      </handler>
+      <handler
+            commandId="test.helloworld.commands.sampleCommand2"
+            class="test.helloworld.handlers.SampleHandler2">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               label="YHR"
+               mnemonic="M"
+               id="test.helloworld.menus.sampleMenu">
+            <command
+                  commandId="test.helloworld.commands.sampleCommand"
+                  mnemonic="S"
+                  id="test.helloworld.menus.sampleCommand">
+            </command>
+            <command
+                  commandId="test.helloworld.commands.sampleCommand2"
+                  mnemonic="S1"
+                  id="test.helloworld.menus.sampleCommand2">
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+
+</plugin>
