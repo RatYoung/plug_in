@@ -1,5 +1,7 @@
 package test.helloworld.handlers;
 
+import java.io.IOException;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -17,11 +19,13 @@ public class SampleHandler extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
-		MessageDialog.openInformation(
-				window.getShell(),
-				"Helloworld",
-				"Hello, Eclipse world");
-		MyFrame.main(null);
+		//MyFrame.main(null);
+		try {
+			JScrollPaneTest.main(null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 }

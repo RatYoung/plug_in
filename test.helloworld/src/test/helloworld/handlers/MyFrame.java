@@ -1,9 +1,13 @@
 package test.helloworld.handlers;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,21 +21,35 @@ public class MyFrame extends JFrame{
 	public MyFrame() {
 		JFrame jf = new JFrame("test");
 		Container container = jf.getContentPane();
-		container.setLayout(null);
+		container.setLayout(new BorderLayout());
 		JLabel jl = new JLabel("这是一个JFrame窗体");
 		jl.setHorizontalAlignment(SwingConstants.CENTER);
-		container.add(jl);
-		JButton bl = new JButton("弹出对话框");
-		bl.setBounds(10, 10, 100, 21);
+		container.add(BorderLayout.CENTER, jl);
+		String border[] = {BorderLayout.NORTH, BorderLayout.SOUTH, BorderLayout.EAST, BorderLayout.WEST};
+		for(int i = 0; i < 3; i++) {
+			JButton bl = new JButton("弹出对话框" + (i+1));
+			bl.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					//new MyJDialog(MyFrame.this).setVisible(true);
+				}
+			});
+			container.add(border[i], bl);
+		}
+		JButton bl = new JButton("弹出对话框" + 4);
 		bl.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MyJDialog(MyFrame.this).setVisible(true);
+				try {
+					new JScrollPaneTest().setVisible(true);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
-		container.add(bl);
+		container.add(border[3], bl);
 		container.setBackground(Color.white);
 		jf.setVisible(true);
-		jf.setSize(1000, 750);
+		jf.setSize(500, 350);
 		jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 }
