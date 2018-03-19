@@ -1,1 +1,0 @@
-The function is to find the maximum number between two numbers.
